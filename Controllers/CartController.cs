@@ -12,7 +12,7 @@ namespace CmsShoppingCart.Controllers
 {
     public class CartController : Controller
     {
-        // GET: Cart
+        // GET:/Cart/Index
         public ActionResult Index()
         {
             // Init the cart list
@@ -38,7 +38,7 @@ namespace CmsShoppingCart.Controllers
 
             return View(cart);
         }
-
+        // GET:/Cart/CartPartial
         public ActionResult CartPartial()
         {
             // Int CartVM
@@ -74,6 +74,8 @@ namespace CmsShoppingCart.Controllers
             return PartialView(model);
         }
 
+        // GET: /Cart/AddToCartPartial/{id}
+        [HttpGet]
         public ActionResult AddToCartPartial(int id)
         {
             // Init the cart list
@@ -128,7 +130,8 @@ namespace CmsShoppingCart.Controllers
             }
         }
 
-        // GET: /Cart/IncrementProduct
+        // GET: /Cart/IncrementProduct/{id}
+        [HttpGet]
         public JsonResult IncrementProduct(int productId)
         {
             // Init the cart list
@@ -150,6 +153,8 @@ namespace CmsShoppingCart.Controllers
             }
         }
 
+        // GET: /Cart/DecrementProduct/{id}
+        [HttpGet]
         public JsonResult DecrementProduct(int productId)
         {
             //Init cart
@@ -179,12 +184,16 @@ namespace CmsShoppingCart.Controllers
             }
         }
 
+        // GET: /Account/PaypalPartial
+        [HttpGet]
         public ActionResult PaypalPartial()
         {
             List<CartVM> cart = Session["cart"] as List<CartVM>;
             return PartialView(cart);
         }
+
         // POST: /Cart/PlaceOrder
+        [HttpPost]
         public void PlaceOrder()
         {
             // Get cart list

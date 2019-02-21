@@ -16,6 +16,7 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
     public class ShopController : Controller
     {
         // GET: Admin/Shop/Categories
+        [HttpGet]
         public ActionResult Categories()
         {
             List<CategoryVM> categoryVMList;
@@ -28,7 +29,7 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
             return View(categoryVMList);
         }
 
-        //POST: Admin/Shop/AddNewCategory
+        //POST: Admin/Shop/AddNewCategory/{name}
         [HttpPost]
         public string AddNewCategory(string catName)
         {
@@ -58,7 +59,7 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
             return id;
         }
 
-        //POST:Admin/Shop/ReorderPages
+        //POST:Admin/Shop/ReorderCategories
         [HttpPost]
         public void ReorderCategories(int[] id)
         {
@@ -83,7 +84,7 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
             }
         }
 
-        //GET:Admin/Shop/DeleteCategory
+        //GET:Admin/Shop/DeleteCategory/{id}
         [HttpGet]
         public ActionResult DeleteCategory(int id)
         {
@@ -97,8 +98,8 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
             return RedirectToAction("Categories");
         }
 
-
-        //POST: Admin/Shop/DeleteCategory
+        //POST: Admin/Shop/DeleteCategory/{nameCatName}/{id}
+        [HttpPost]
         public string RenameCategory(string newCatName, int id)
         {
             using (Db db = new Db())
@@ -254,6 +255,8 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
             return RedirectToAction("Addproduct");
         }
 
+        //GET: /Shop/Products
+        [HttpGet]
         public ActionResult Products(int? page, int? catId)
         {
             List<ProductVM> listOfProductVM;
@@ -277,9 +280,9 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
 
             return View(onePageOfproducts);
         }
+        
         //GET: Admin/Shop/EditProduct/{id}
         [HttpGet]
-
         public ActionResult EditProduct(int id)
         {
             ProductVM model;
@@ -304,6 +307,7 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
             return View(model);
         }
 
+        //POST: /Shop/EditProduct
         [HttpPost]
         public ActionResult EditProduct(ProductVM model, HttpPostedFileBase file)
         {
@@ -420,7 +424,6 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
 
         //GET: Admin/Shop/DeleteProduct/{id}
         [HttpGet]
-
         public ActionResult DeleteProduct(int id)
         {
             using (Db db = new Db())
@@ -485,7 +488,7 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
             });
         }
 
-        //POST: Admin/Shop/DeleteImage
+        //POST: Admin/Shop/DeleteImage/{id}/{imageName}
         [HttpPost]
         public void DeleteImage(int id, string imageName)
         {

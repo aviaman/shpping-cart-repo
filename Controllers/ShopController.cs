@@ -11,12 +11,15 @@ namespace CmsShoppingCart.Controllers
 {
     public class ShopController : Controller
     {
-        // GET: Shop
+        // GET: /Shop/Index
+        [HttpGet]
         public ActionResult Index()
         {
             return RedirectToAction("Index", "Pages");
         }
 
+        // GET: /Shop/CategoryMenuPartial
+        [HttpGet]
         public ActionResult CategoryMenuPartial()
         {
             List<CategoryVM> categoryVMList;
@@ -29,6 +32,9 @@ namespace CmsShoppingCart.Controllers
             return PartialView(categoryVMList);
         }
 
+
+        // GET: /Shop/Category/{name}
+        [HttpGet]
         public ActionResult Category(string name)
         {
             List<ProductVM> productVMList;
@@ -47,6 +53,8 @@ namespace CmsShoppingCart.Controllers
             return View(productVMList);
         }
 
+        // GET: /Shop/ProductDetails/{name}
+        [HttpGet]
         [ActionName("product-details")]
         public ActionResult ProductDetails(string name)
         {

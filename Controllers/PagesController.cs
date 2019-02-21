@@ -11,7 +11,8 @@ namespace CmsShoppingCart.Controllers
 {
     public class PagesController : Controller
     {
-        // GET: Index/{page}
+        // GET: /Pages/Index/{page}
+        [HttpGet]
         public ActionResult Index(string page = "")
         {
             // get/set page slug
@@ -55,6 +56,8 @@ namespace CmsShoppingCart.Controllers
             return View(model);
         }
 
+        // GET: /Pages/PagesMenuPartial
+        [HttpGet]
         public ActionResult PagesMenuPartial()
         {
             List<PageVM> pageVMList;
@@ -66,7 +69,7 @@ namespace CmsShoppingCart.Controllers
 
             return PartialView(pageVMList);
         }
-
+        // GET: /Pages/SidebarPartial
         public ActionResult SidebarPartial()
         {
             SidebarVM model;

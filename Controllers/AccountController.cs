@@ -31,6 +31,7 @@ namespace CmsShoppingCart.Controllers
             // return view
             return View();
         }
+
         // POST: /Account/Login
         [HttpPost]
         public ActionResult Login(LoginUserVM model)
@@ -73,7 +74,7 @@ namespace CmsShoppingCart.Controllers
             return View("CreateAccount");
         }
 
-        // GET: /account/create-account
+        // POST: /account/create-account
         [ActionName("create-account")]
         [HttpPost]
         public ActionResult CreateAccount(UserVM model)
@@ -147,6 +148,7 @@ namespace CmsShoppingCart.Controllers
             return Redirect("Login");
         }
 
+        // GET: /Account/UserNavPartial
         [Authorize]
         public ActionResult UserNavPartial()
         {

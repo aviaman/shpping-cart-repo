@@ -13,6 +13,7 @@ namespace CmsShoppingCart.Areas.Admin.Controllers
     public class PagesController : Controller
     {
         // GET: Admin/Pages
+        [HttpGet]
         public ActionResult Index()
         {
             //Declare list of PageVM
