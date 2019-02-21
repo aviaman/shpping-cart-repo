@@ -8,32 +8,61 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-topcancel">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/admin/dashboard" class="navbar-brand">Dashboard</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/admin/pages">Pages</a></li>
-                    <li><a href="/admin/pages/EditSidebar">Sidebar</a></li>
-                    <li><a href="/admin/shop/Categories">Categories</a></li>
-                    <li><a href="/admin/shop/Products">Products</a></li>
-                    <li><a href="/admin/shop/Orders">Orders</a></li>
-                </ul>
-                <ul class="navbar-right">
-                    <li>
-                        <a href="/" class="navbar-brand" target="_blank">CmsShoppingCart</a>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Shop Land</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarNavDropdown" class="navbar-collapse collapse">
+                <ul class="navbar-nav mr-auto" style="margin-bottom:19px;">
+                    <li class="nav-item right-nav-li">
+                        <a href="/admin/dashboard" class="nav-link">עמוד הבית</a>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/pages">דפים</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/pages/EditSidebar">סרגל צידי</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/shop/Categories">קטגוריות</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/shop/Products">מוצרים</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/shop/Orders">הזמנות</a></li>
+                </ul>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/account/login">כניסה</a>
+                    </li>
+                    
                 </ul>
             </div>
-        </div>
+        </nav>
     </div>
+
+
+    @*<div class="navbar navbar-inverse navbar-fixed-topcancel">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/admin/dashboard" class="navbar-brand">Dashboard</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/admin/pages">Pages</a></li>
+                        <li><a href="/admin/pages/EditSidebar">Sidebar</a></li>
+                        <li><a href="/admin/shop/Categories">Categories</a></li>
+                        <li><a href="/admin/shop/Products">Products</a></li>
+                        <li><a href="/admin/shop/Orders">Orders</a></li>
+                    </ul>
+                    <ul class="navbar-right">
+                        <li>
+                            <a href="/" class="navbar-brand" target="_blank">Shop Land CMS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -5,18 +5,75 @@
 }
 
 
-@foreach (var item in Model)
-{
-    if (tempPageTitle == item.Title)
+<ul class="navbar-nav mr-auto" style="margin-bottom:19px;">
+    @foreach (var item in Model)
     {
-        <li class="active"><a href="@item.Slug">@item.Title</a></li>
+
+        if (tempPageTitle == item.Title)
+        {
+            <li class="nav-item active">
+                <a class="nav-link" href="@item.Slug">@item.Title <span class="sr-only">(current)</span></a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="@item.Slug">@item.Title</a>
+            </li>
+        }
+    }
+</ul>
+
+<ul class="navbar-nav">
+    @if (Request.IsAuthenticated)
+    {
+        <li class="nav-item right-nav-li"><a class="nav-link" href="/account/logout">יציאה </a></li>
     }
     else
     {
-        <li>
-            <a href="@item.Slug">@item.Title</a>
-        </li>
+        if (ViewBag.Title == "Login")
+        {
+            <li class="nav-item active">
+                <a class="nav-link" href="/account/login">כניסה</a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="/account/login">כניסה</a>
+            </li>
+        }
     }
-}
+
+    @if (Request.IsAuthenticated && User.IsInRole("User"))
+    {
+        if (ViewBag.Title == "User Profile" || ViewBag.Title == "Orders")
+        {
+            <li class="nav-item active right-nav-li">@Html.Action("UserNavPartial", "Account", new { area = "", @class = "nav-link" }) </li>
+        }
+        else
+        {
+            <li class="nav-item right-nav-li">@Html.Action("UserNavPartial", "Account", new { area = "", @class = "nav-link" }) </li>
+        }
+    }
+
+
+    @if (!User.IsInRole("Admin"))
+    {
+        if (ViewBag.Title != "Cart Details")
+        {
+            @Html.Action("CartPartial", "Cart")
+        }
+    }
+    else
+    {
+        if (Request.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <li class="nav-item right-nav-li">
+                @Html.ActionLink("מערכת ניהול", "Index", "Dashboard", new { area = "Admin" }, new { @class = "nav-link" })
+            </li>
+        }
+    }
+</ul>
 
 
